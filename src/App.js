@@ -7,26 +7,29 @@ import {
   Route
 } from "react-router-dom";
 import { withAuth0 } from '@auth0/auth0-react';
-
+import Home from './components/Home'
+import FavFlowers from './components/FavFlowers'
 
 class App extends React.Component {
 
   render() {
     console.log('app', this.props);
     const { isAuthenticated } = this.props.auth0;
-    return(
+    return (
       <>
         <Router>
-            <Header />
-            <Switch>
-              <Route exact path="/">
-                {/* TODO: if the user is logged in, render the `Home` component, if they are not, render the `Login` component */}
-              </Route>
-              <Route exact path="/favFlowers">
-                {/* TODO: if the user is logged in, render the `FavFlowers` component, if they are not, render the `Login` component */}
-              </Route>
-            </Switch>
-            <Footer />
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+              {/* TODO: if the user is logged in, render the `Home` component, if they are not, render the `Login` component */}
+            </Route>
+            <Route exact path="/favFlowers">
+              <FavFlowers />
+              {/* TODO: if the user is logged in, render the `FavFlowers` component, if they are not, render the `Login` component */}
+            </Route>
+          </Switch>
+          <Footer />
         </Router>
       </>
     );
